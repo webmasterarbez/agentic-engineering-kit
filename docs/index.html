@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Engineering Kit — Documentation</title>
+<style>
+  :root {
+    --ink: #0f172a;        /* darkest page bg (cover) */
+    --paper: #f8fafc;      /* body page bg */
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --accent: #2563eb;     /* primary */
+    --accent-soft: #eff6ff;
+    --line: #e2e8f0;
+  }
+  @page { size: A4; margin: 0; }
+  html, body { margin: 0; padding: 0; background: var(--ink); }
+  body { font-family: "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif; color: var(--text); font-size: 10.5pt; line-height: 1.55; }
+
+  .page { width: 210mm; min-height: 297mm; box-sizing: border-box; padding: 18mm 16mm; background: var(--paper); }
+  .page.cover { background: var(--ink); color: #e2e8f0; padding: 26mm 22mm; }
+
+  /* Cover */
+  .cover .kicker { font-size: 10pt; letter-spacing: 3pt; text-transform: uppercase; color: #7ea2f0; margin-bottom: 10mm; }
+  .cover h1 { font-size: 34pt; line-height: 1.12; margin: 0 0 6mm 0; color: #ffffff; font-weight: 800; }
+  .cover .sub { font-size: 12.5pt; color: #94a3b8; max-width: 150mm; margin-bottom: 14mm; }
+  .cover .summary { border-left: 1.2pt solid #2563eb; padding: 4mm 6mm; background: rgba(37,99,235,0.08); max-width: 150mm; font-size: 10.5pt; color: #cbd5e1; }
+  .cover .meta { margin-top: 16mm; font-size: 9.5pt; color: #64748b; }
+  .cover .badges { margin-top: 8mm; }
+  .cover .badge { display: inline-block; border: 0.6pt solid #334155; border-radius: 3pt; padding: 1.6mm 3.5mm; margin-right: 3mm; font-size: 8.5pt; color: #94a3b8; letter-spacing: 0.5pt; }
+
+  /* Body pages */
+  h2 { font-size: 15pt; margin: 0 0 4mm 0; color: var(--ink); }
+  h3 { font-size: 11.5pt; margin: 6mm 0 2mm 0; color: var(--ink); }
+  p { margin: 0 0 3mm 0; }
+  .lead { font-size: 11pt; color: var(--muted); margin-bottom: 5mm; }
+  code, .mono { font-family: "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace; font-size: 9pt; background: var(--accent-soft); color: #1d4ed8; padding: 0.4mm 1.4mm; border-radius: 2pt; }
+  pre { background: #0f172a; color: #e2e8f0; padding: 4mm 5mm; border-radius: 4pt; font-size: 8.6pt; line-height: 1.5; overflow: hidden; white-space: pre-wrap; }
+  pre code { background: none; color: inherit; padding: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 3mm 0 5mm 0; }
+  th { text-align: left; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.6pt; color: var(--muted); border-bottom: 1pt solid var(--line); padding: 2mm 3mm 2mm 0; }
+  td { font-size: 9.6pt; border-bottom: 0.5pt solid var(--line); padding: 2.2mm 3mm 2.2mm 0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .card { background: var(--card); border: 0.6pt solid var(--line); border-radius: 5pt; padding: 5mm 6mm; margin: 4mm 0; }
+  .card.accent { border-left: 2pt solid var(--accent); }
+  .rule { border-left: 2pt solid var(--accent); background: var(--accent-soft); padding: 3.5mm 5mm; margin: 2.5mm 0; border-radius: 0 4pt 4pt 0; }
+  .rule b { color: var(--ink); }
+  .two { display: flex; gap: 5mm; }
+  .two > div { flex: 1; }
+  .footer-note { margin-top: 6mm; font-size: 8.5pt; color: var(--muted); border-top: 0.5pt solid var(--line); padding-top: 3mm; }
+  ul { margin: 0 0 3mm 0; padding-left: 5mm; }
+  li { margin-bottom: 1.2mm; }
+  .pt { break-inside: avoid; }
+  .avoid { break-inside: avoid; }
+
+  @media screen {
+    html { background: #0b1220; }
+    body { width: 210mm; margin: 8mm auto; box-shadow: 0 4mm 12mm rgba(0,0,0,0.4); }
+    .page { margin-bottom: 6mm; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 · COVER -->
+<section class="page cover">
+  <div class="kicker">Agent Operating Method · Kit v1.0</div>
+  <h1>Agentic<br>Engineering Kit</h1>
+  <p class="sub">Vibe code the Karpathy way — a validated, agent-agnostic method for directing AI coding agents: spec-first, verify-first, autonomy-dialed, delivery-as-contract. One skill, every tool.</p>
+  <div class="summary">
+    Built from Andrej Karpathy's 2026 corpus (Sequoia AI Ascent talk, autoresearch, nanochat, the 4-rules CLAUDE.md) and validated 2026-11-05 two ways: 30 days of community evidence (58 items across Reddit, X, Hacker News, dev.to) and a 37-source research-notebook cross-check. 5/6 pillars corpus-supported with exact quotes; 1 partial. Golden rule: outsource the thinking, never the understanding.
+  </div>
+  <div class="badges">
+    <span class="badge">NO MCP SERVERS</span>
+    <span class="badge">NO API KEYS</span>
+    <span class="badge">ZERO CONTEXT COST</span>
+    <span class="badge">AGENT SKILLS STANDARD</span>
+  </div>
+  <p class="meta">Works with: Claude Code · Google Antigravity (agy CLI + IDE) · Cursor · ZCode · Codex · Opencode · anything via paste-prompt<br>
+  github.com/webmasterarbez/agentic-engineering-kit · MIT · Validated 2026-11-05</p>
+</section>
+
+<!-- PAGE 2 · METHOD -->
+<section class="page">
+  <h2>The method in 60 seconds</h2>
+  <p class="lead">You are the creative director. The agent is a brilliant intern with perfect recall and no accountability. Claim the leverage without lowering the bar.</p>
+
+  <div class="rule"><b>1 · Context.</b> Repo has a short AGENTS.md / CLAUDE.md: architecture map, commands, conventions, never-touch list. The context window is the program — trim ruthlessly, consolidate, never accumulate.</div>
+  <div class="rule"><b>2 · Spec.</b> Co-author SPEC.md (detailed enough to be the docs) before any implementation. Human signs off.</div>
+  <div class="rule"><b>3 · Autonomy dial.</b> Per task: on-the-leash (architecture, security, judgment) · autopilot (scoped goals + checkpoints) · autonomous (isolated env + explicit verifier). Default one lower when unsure.</div>
+  <div class="rule"><b>4 · Verify-first.</b> Build the failing test / eval / metric before the implementation. Loops must be resettable, efficient, rewardable.</div>
+  <div class="rule"><b>5 · Deliver as a contract.</b> What changed &amp; why + proof it works (test output, logs) + what to review + what could break.</div>
+  <div class="rule"><b>6 · The loop improves, not the agent.</b> Corrected the same thing twice? Encode it — rule, hook, or test.</div>
+
+  <h3>The four rules (every task)</h3>
+  <table>
+    <tr><th style="width:30%">Rule</th><th>Meaning</th></tr>
+    <tr><td><b>Think before coding</b></td><td>State assumptions first. Surface tradeoffs. Ask when uncertain; show interpretations when ambiguous. Never hide confusion.</td></tr>
+    <tr><td><b>Simplicity first</b></td><td>Minimum code that solves the stated problem. No unrequested features, no speculative or single-use abstractions.</td></tr>
+    <tr><td><b>Surgical changes</b></td><td>Touch only what the task requires. No drive-by refactors. Match repo style. Clean up your own orphans.</td></tr>
+    <tr><td><b>Goal-driven execution</b></td><td>Declarative goals with success criteria, then verify. For bugs: failing test first, then make it pass.</td></tr>
+  </table>
+
+  <h3>Operating principles</h3>
+  <ul>
+    <li><b>Outsource thinking, never understanding.</b> Delegate syntax and API recall freely. Never improvise data models, identity/auth, security, payments, invariants. (Canonical failure: linking accounts by email instead of persistent IDs.)</li>
+    <li><b>Verifiability beats specifiability.</b> "Traditional software automates what you can specify. LLMs automate what you can verify." No verifier, no autonomy.</li>
+    <li><b>Ghosts, not animals.</b> The agent is a statistical process with jagged intelligence — no hiding confusion, no performing certainty.</li>
+    <li><b>Stay supervisable.</b> "If you cannot be a good supervisor, you will not get good results." Every diff must be explainable to the accountable human.</li>
+  </ul>
+  <p class="footer-note">Source: Karpathy 2026 corpus · community-validated 2026-11-05 (58 evidence items + 37-source notebook cross-check) · agentic-engineering-kit</p>
+</section>
+
+<!-- PAGE 3 · USAGE -->
+<section class="page">
+  <h2>Usage per tool</h2>
+  <p class="lead">One installer, six locations. Run <code>./install.sh</code>, restart open sessions, then say <code>karp-mode</code> — or invoke the skill by name.</p>
+
+  <table class="avoid">
+    <tr><th style="width:24%">Tool</th><th style="width:38%">Skill location</th><th>Invoke</th></tr>
+    <tr><td><b>Claude Code</b></td><td><code>~/.claude/skills/</code> (user) · <code>.claude/skills/</code> (project)</td><td><code>/karpathy-agentic-engineering</code> or "karp-mode". Pair with hooks (p.5).</td></tr>
+    <tr><td><b>Antigravity CLI (agy)</b></td><td><code>~/.gemini/skills/</code>, <code>~/.gemini/antigravity-cli/skills/</code></td><td><code>agy -i "karp-mode"</code> · session modes: <code>--mode plan|accept-edits|auto</code>, <code>--sandbox</code></td></tr>
+    <tr><td><b>Antigravity IDE</b></td><td><code>~/.gemini/antigravity/skills/</code> · project <code>.agents/skills/</code></td><td>Say "karp-mode" in agent chat. Rules: <code>AGENTS.md</code>, <code>GEMINI.md</code>, <code>.agents/rules/*.md</code></td></tr>
+    <tr><td><b>Cursor</b></td><td><code>~/.cursor/skills/</code> · project <code>.cursor/skills/</code> or <code>.agents/skills/</code></td><td><code>/karpathy-agentic-engineering</code> in Agent chat, or "karp-mode"</td></tr>
+    <tr><td><b>ZCode</b></td><td><code>~/.agents/skills/</code> (standard)</td><td>New session + "karp-mode". Guardrails in <code>~/.zcode/AGENTS.md</code></td></tr>
+    <tr><td><b>Codex / Opencode / other</b></td><td><code>~/.agents/skills/</code> · project <code>.agents/skills/</code></td><td>Standard readers pick it up automatically</td></tr>
+    <tr><td><b>Anything else</b></td><td>Paste-prompt (no skills needed)</td><td>Paste <code>skills/.../PASTE-PROMPT.md</code> before your task</td></tr>
+  </table>
+
+  <h3>Quick start</h3>
+  <pre><code>git clone https://github.com/webmasterarbez/agentic-engineering-kit.git
+cd agentic-engineering-kit
+./install.sh          # installs into every detected tool
+# flags: --all (create missing dirs) · --uninstall · --sync (re-copy after updates)</code></pre>
+
+  <div class="card accent">
+    <b>Per-repo setup (the second half of the method):</b> copy <code>templates/AGENTS-CORE.md</code> into each project as <code>AGENTS.md</code> (or <code>CLAUDE.md</code> / <code>GEMINI.md</code>), fill the four bracketed sections, keep it under ~60 lines. The skill drives the session; the context file steers every session in that repo.
+  </div>
+</section>
+
+<!-- PAGE 4 · ADMIN: INVENTORY -->
+<section class="page">
+  <h2>Admin — inventory</h2>
+
+  <h3>Kit files</h3>
+  <table>
+    <tr><th style="width:42%">File</th><th>Role</th></tr>
+    <tr><td><code>skills/.../SKILL.md</code></td><td>The skill — method, rules, workflow, autonomy dial</td></tr>
+    <tr><td><code>skills/.../PASTE-PROMPT.md</code></td><td>Same method as a universal paste-prompt</td></tr>
+    <tr><td><code>templates/AGENTS-CORE.md</code></td><td>Repo context-file template (4 rules, trimmed)</td></tr>
+    <tr><td><code>LLM.md</code></td><td>Self-contained instruction doc for direct LLM consumption</td></tr>
+    <tr><td><code>install.sh</code></td><td>Installer / uninstaller / sync for all locations</td></tr>
+    <tr><td><code>docs/</code></td><td>This document (HTML + PDF)</td></tr>
+  </table>
+
+  <h3>MCP servers — none required</h3>
+  <p>The kit is intentionally MCP-free: every connected MCP server injects its full tool schemas into <i>every</i> session. The kit adds zero always-on context cost. Optional tooling used only by the validation procedure:</p>
+  <table>
+    <tr><th style="width:26%">Tool</th><th style="width:34%">Purpose</th><th>Where configured</th></tr>
+    <tr><td><code>notebooklm</code> (CLI)</td><td>Grounded Q&amp;A vs the research notebook</td><td><code>~/.local/bin/notebooklm</code> (notebooklm-py)</td></tr>
+    <tr><td><code>last30days</code> (skill)</td><td>30-day community evidence harvest</td><td><code>~/.agents/skills/last30days</code></td></tr>
+    <tr><td><code>codegraph</code></td><td>Symbol navigation in indexed repos</td><td>per-tool MCP config; project-scope big servers</td></tr>
+    <tr><td><code>searx</code> (CLI)</td><td>Local rate-limit-free web search</td><td><code>~/.local/bin/searx</code></td></tr>
+  </table>
+  <div class="card"><b>Scope rule (hard-won):</b> anything big belongs <i>project-scoped</i> (that project's <code>.mcp.json</code>), never global. One oversized global server cost 15–20k tokens per session before being scoped down. Add per tool: <code>agy mcp add</code> · Claude Code <code>.mcp.json</code> · Cursor <code>~/.cursor/mcp.json</code> · ZCode <code>~/.zcode/cli/config.json</code>.</div>
+
+  <h3>Hooks — enforcement beyond markdown</h3>
+  <p>Markdown rules guide; hooks enforce. Claude Code example (<code>~/.claude/settings.json</code>):</p>
+  <pre><code>{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Bash(git push --force*)|Bash(rm -rf*)",
+      "hooks": [{ "type": "command",
+        "command": "echo 'BLOCKED: destructive op needs human approval' &amp;&amp; exit 2" }]
+    }],
+    "PostToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{ "type": "command", "command": "lint-staged || true" }]
+    }]
+  }
+}</code></pre>
+  <p style="font-size:9.5pt;color:var(--muted)">agy: <code>--mode plan|accept-edits|auto</code> + <code>--sandbox</code> set the session leash. ZCode: guardrails in <code>~/.zcode/AGENTS.md</code>. Correct-twice ledger: promote repeated corrections into the context file or a hook, then delete the ledger line.</p>
+</section>
+
+<!-- PAGE 5 · ADMIN: PROCEDURES -->
+<section class="page">
+  <h2>Admin — procedures</h2>
+
+  <h3>Install · update · uninstall · backup</h3>
+  <pre><code>./install.sh --all         # install everywhere (creates missing dirs)
+./install.sh               # re-sync live copies after repo updates
+./install.sh --uninstall   # remove from all locations
+
+tar czf ~/backups/aek-$(date +%F).tgz \
+  ~/.agents/skills/karpathy-agentic-engineering \
+  ~/.claude/skills/karpathy-agentic-engineering \
+  ~/.cursor/skills/karpathy-agentic-engineering \
+  ~/.gemini/skills/karpathy-agentic-engineering</code></pre>
+  <p>The git repo is the source of truth and the real backup — restore is a clean clone + <code>./install.sh</code>. Never edit live copies; edit the repo and re-sync.</p>
+
+  <h3>Monthly re-validation (repeatable)</h3>
+  <ol>
+    <li><b>Community evidence</b> — run the last30days engine on "Karpathy agentic engineering workflow" with targeting <code>--x-handle=karpathy --github-user=karpathy --subreddits=ChatGPTCoding,ClaudeCode,ExperiencedDevs,AgentsOfAI,singularity</code>. Note findings that support / contradict / extend the six pillars.</li>
+    <li><b>Corpus cross-check</b> — <code>notebooklm use a6b9e81a</code> then <code>notebooklm ask "For each finding: does Karpathy's work support it, contradict it, or stay silent? Quote exact words."</code></li>
+    <li><b>Apply</b> — edit SKILL.md + PASTE-PROMPT.md; label community-vs-Karpathy provenance in the footer; update the validation date and counts.</li>
+    <li><b>Publish</b> — <code>./install.sh &amp;&amp; git add -A &amp;&amp; git commit -m "re-validate YYYY-MM" &amp;&amp; git push</code></li>
+  </ol>
+  <div class="card accent"><b>Precedence when validation conflicts:</b> the corpus wins — fix the skill to match what Karpathy actually said. Community consensus without corpus support may be added but must be labeled "community-converged addition" (the risk-tier clause is the precedent).</div>
+
+  <h3>Porting the rules into a project</h3>
+  <ul>
+    <li>Copy <code>templates/AGENTS-CORE.md</code> to the repo root as <code>AGENTS.md</code> (or <code>CLAUDE.md</code> / <code>GEMINI.md</code>).</li>
+    <li>Fill: architecture map, commands, conventions, never-touch list. Under ~60 lines; detail moves to <code>.agents/rules/*.md</code> or docs.</li>
+    <li>Optional: copy the skill into <code>.agents/skills/</code> so repo clones carry the method even without a global install.</li>
+  </ul>
+
+  <h3>Troubleshooting</h3>
+  <table>
+    <tr><th style="width:38%">Symptom</th><th>Fix</th></tr>
+    <tr><td>Skill doesn't appear in a tool</td><td>Check the exact directory (p.3 table); restart the session to rescan</td></tr>
+    <tr><td>Loads but never triggers</td><td>The description field is the trigger surface — keep "karp-mode" / "agentic engineering" in it</td></tr>
+    <tr><td>Copies diverge</td><td>Re-run <code>./install.sh</code>; only edit the repo</td></tr>
+    <tr><td>Context bloat returns</td><td>Audit MCP lists per tool; the kit itself is always zero-cost</td></tr>
+  </table>
+</section>
+
+<!-- PAGE 6 · PROVENANCE -->
+<section class="page">
+  <h2>Provenance &amp; validation record</h2>
+  <p class="lead">What this method is built on, and how it was checked.</p>
+
+  <h3>Sources of the method</h3>
+  <ul>
+    <li>Andrej Karpathy, <i>"From Vibe Coding to Agentic Engineering"</i> with Stephanie Zhan, Sequoia AI Ascent 2026 (talk + transcript + his own bearblog writeup).</li>
+    <li>Karpathy's <code>autoresearch</code> (program.md vs train.py loops), <code>nanochat</code>, and MenuGen (the email/Stripe identity-bug example).</li>
+    <li>The 4-rules <code>CLAUDE.md</code> distilled from his observations on LLM coding pitfalls.</li>
+    <li>February 2026 interviews and coverage (Observer, Business Insider, The New Stack).</li>
+  </ul>
+
+  <h3>Validation 2026-11-05</h3>
+  <table>
+    <tr><th style="width:44%">Finding</th><th>Community evidence</th><th>Corpus check</th></tr>
+    <tr><td>Own the spec, checks, final call; the loop improves, not the agent</td><td>X, high engagement</td><td>Supported (quotes)</td></tr>
+    <tr><td>Autonomy dial: leash / autopilot / autonomous</td><td>HN + Reddit workflows</td><td>Supported</td></tr>
+    <tr><td>Verify-first: resettable, efficient, rewardable</td><td>practitioner guides</td><td>Supported</td></tr>
+    <tr><td>Deskilling is real; supervisor competence gates results</td><td>HN (104-pt thread), Anthropic RCT (52 devs)</td><td>Supported ("can't outsource understanding")</td></tr>
+    <tr><td>Correct-twice → encode as hook/rule/test; short context files</td><td>r/ClaudeCode (713-upvote setup)</td><td>Supported ("trim ruthlessly")</td></tr>
+    <tr><td>Delivery = proof + risk tier, not a bare diff</td><td>PR-contract practice (Osmani)</td><td>Partial — proof supported; risk tiers are a community addition</td></tr>
+  </table>
+
+  <h3>Key quotes</h3>
+  <div class="card">
+    <p>"You can outsource your thinking, but you can't outsource your understanding."</p>
+    <p>"Traditional computers automate what you can specify in code. This latest round of LLMs can automate what you can verify."</p>
+    <p>"Vibe coding raises the floor. Agentic engineering raises the ceiling." · "Don't tell it what to do, give it success criteria and watch it go."</p>
+    <p>"If you cannot be a good supervisor, you will not get good results." · "Treat your context window as the wiring diagram... trim ruthlessly."</p>
+  </div>
+
+  <p class="footer-note">Agentic Engineering Kit v1.0 · MIT · github.com/webmasterarbez/agentic-engineering-kit · Full text: README.md (users) · ADMIN.md (operators) · LLM.md (machines)</p>
+</section>
+
+</body>
+</html>
