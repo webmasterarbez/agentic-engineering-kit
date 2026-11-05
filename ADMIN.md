@@ -110,14 +110,20 @@ Restore = untar over the locations, or simply `./install.sh` from a clean clone.
 
 ## 4. Porting the rules into a project (per-repo setup)
 
-1. Copy `templates/AGENTS-CORE.md` into the repo root as `AGENTS.md` (or `CLAUDE.md` for Claude Code-first repos; Antigravity reads either, plus `GEMINI.md`).
-2. Fill the four bracketed sections: architecture map, commands, conventions, never-touch list.
-3. Keep it under ~60 lines. If it grows, move detail into `.agents/rules/*.md` (Antigravity) or docs/ and link it.
-4. Optional: copy the skill folder into `.agents/skills/` so repo clones carry the method even without a global install.
+Automated: `./setup-repo.sh <repo-path> [--hooks] [--skill] [--force]`
 
-## 5. Monthly re-validation procedure (the repeatable part)
+- Auto-names the context file (`.claude/` present → `CLAUDE.md`, else `AGENTS.md`; `--name` overrides).
+- Pre-fills from the repo itself: package.json scripts / Makefile targets / cargo / go / pytest / docker compose → Commands section; generated dirs, `.env*`, `*.db`, `prisma/migrations` → Never-touch list; detected stack → header.
+- Injects the verbatim 4 rules + operating constraints; lands under ~35 lines; two `[fill me]` sections remain for the human.
+- `--hooks` installs the §1.4 guardrail into `<repo>/.claude/settings.json` **merge-safe** (existing hooks and keys untouched), marked `agentic-engineering-kit leash`, idempotent, removable via `--remove-hooks` without touching anything else.
+- `--skill` embeds the skill into `<repo>/.agents/skills/` so clones carry the method.
+- An existing context file is never overwritten without `--force`; you get a line count instead (>60 = trim candidate).
 
-Goal: detect drift between the skill, the community, and Karpathy's corpus; update and push. Run on the 1st of each month (automated on the author's machine via a scheduled task; here is the manual procedure any machine can run).
+Manual fallback: copy `templates/AGENTS-CORE.md` to the repo root as `AGENTS.md` (or `CLAUDE.md`; Antigravity reads either, plus `GEMINI.md`), fill the four sections, keep under ~60 lines, detail goes to `.agents/rules/*.md` or docs/.
+
+## 5. Weekly re-validation procedure (the repeatable part)
+
+Goal: detect drift between the skill, the community, and Karpathy's corpus; update and push. Runs every Monday at 09:00 (automated on the author's machine via a scheduled task; here is the manual procedure any machine can run). Most weeks nothing changes — a no-change week reports the check and creates no commit.
 
 ### 5.1 Community evidence (last30days skill)
 
@@ -145,7 +151,7 @@ notebooklm ask "For each of these community findings from the last 30 days: [pas
 1. Edit `skills/karpathy-agentic-engineering/SKILL.md` and `PASTE-PROMPT.md` — add supported extensions, mark community-vs-Karpathy provenance in the footer (update the validation date and counts).
 2. Regenerate `docs/` if the method changed materially.
 3. `./install.sh` to re-sync all live locations.
-4. `git add -A && git commit -m "re-validate YYYY-MM" && git push`
+4. `git add -A && git commit -m "re-validate YYYY-MM-DD" && git push`
 
 ### 5.4 When validation says the skill is wrong
 

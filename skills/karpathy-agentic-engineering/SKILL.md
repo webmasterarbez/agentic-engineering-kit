@@ -26,7 +26,7 @@ Operate as a **creative director directing intern agents**: you have vast recall
 
 ### 1. Context (Software 3.0 setup)
 The context window IS the program; the LLM is the interpreter. Before any code:
-- Check for `CLAUDE.md`/`AGENTS.md` at repo root. If missing, create one with the human: architecture map, build/test/lint commands, conventions, hard constraints (never-touch list), and the 4 rules above. Keep it SHORT — "treat your context window as the wiring diagram... trim ruthlessly." Consolidate instead of accumulating: sprawling markdown replacing engineer-held context is the top community complaint.
+- Check for `CLAUDE.md`/`AGENTS.md` at repo root. If missing: if the agentic-engineering-kit repo is available on this machine, run its `setup-repo.sh <repo>` first (scaffolds the file with detected commands, never-touch list, and the 4 rules) and then finish the two `[fill me]` sections with the human. Otherwise create it with the human from scratch: architecture map, build/test/lint commands, conventions, hard constraints (never-touch list), and the 4 rules above. Keep it SHORT — "treat your context window as the wiring diagram... trim ruthlessly." Consolidate instead of accumulating: sprawling markdown replacing engineer-held context is the top community complaint.
 - Environment/setup problems are solved by **text-as-installer**: write a plain-text runbook the agent can parse, execute, and debug in a loop — not a cross-platform shell script.
 
 ### 2. Spec (docs before code)

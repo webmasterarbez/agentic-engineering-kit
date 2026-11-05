@@ -14,6 +14,7 @@ Built from Andrej Karpathy's 2026 corpus (Sequoia AI Ascent talk *"From Vibe Cod
 | `skills/karpathy-agentic-engineering/SKILL.md` | The skill — drops into any Agent-Skills-compatible tool |
 | `skills/karpathy-agentic-engineering/PASTE-PROMPT.md` | Universal paste-prompt for agents without skills support |
 | `templates/AGENTS-CORE.md` | Repo context-file template (the 4 rules, trimmed) — drop into any project |
+| `setup-repo.sh` | Per-repo setup: generates an optimized `CLAUDE.md`/`AGENTS.md` (auto-detected commands, never-touch list, verbatim rules) + installs the Claude Code guardrail hook, merge-safe and removable |
 | `LLM.md` | Full instruction doc, self-contained, for feeding to any LLM directly |
 | `ADMIN.md` | Admin guide: install, MCPs, hooks, backup, monthly re-validation procedure |
 | `docs/index.html` + `docs/agentic-engineering-kit.pdf` | The same docs as HTML and PDF |
@@ -28,6 +29,16 @@ cd agentic-engineering-kit
 ```
 
 Then in any supported agent, say **"karp-mode"**, **"agentic engineering mode"**, or invoke the skill by name.
+
+Per-repo setup (do this once per project):
+
+```bash
+./setup-repo.sh ~/projects/my-app --hooks   # optimized CLAUDE.md/AGENTS.md + guardrail hook
+#                                            (auto-detects name: .claude/ present → CLAUDE.md, else AGENTS.md)
+# flags: --skill (embed the skill in the repo) · --force (replace existing file) · --remove-hooks
+```
+
+The generated file lands under ~35 lines with the repo's real commands and never-touch list pre-filled; you fill two `[fill me]` sections and every tool reads it. If a context file already exists it is never overwritten — you get a line-count audit instead (over 60 lines = trim candidate).
 
 No skills support? Open `skills/karpathy-agentic-engineering/PASTE-PROMPT.md` and paste it into any agent before your task. That file *is* the whole method — fitting, since Karpathy's own framing is "what is the piece of text to copy-paste to your agent? That's the programming paradigm now."
 
@@ -67,7 +78,7 @@ Use `PASTE-PROMPT.md`. Most tools that read `~/.agents/skills/` or project `.age
 
 ## Maintenance
 
-The skill carries its provenance in its footer. A monthly re-validation procedure (community evidence via `last30days`, corpus check via `notebooklm` CLI, then update + push) is documented step-by-step in `ADMIN.md` so it stays repeatable on any machine.
+The skill carries its provenance in its footer. A weekly re-validation (every Monday 09:00 on the author's machine: community evidence via `last30days`, corpus check via `notebooklm` CLI, update + push only when something changed) is documented step-by-step in `ADMIN.md` so it stays repeatable on any machine. The full evidence trail lives in `research/`.
 
 ## License
 

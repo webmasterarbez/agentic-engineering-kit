@@ -133,7 +133,10 @@
   <pre><code>git clone https://github.com/webmasterarbez/agentic-engineering-kit.git
 cd agentic-engineering-kit
 ./install.sh          # installs into every detected tool
-# flags: --all (create missing dirs) · --uninstall · --sync (re-copy after updates)</code></pre>
+./setup-repo.sh ~/projects/my-app --hooks
+#   ↑ optimized CLAUDE.md/AGENTS.md (detected commands + never-touch list + rules,
+#     ~35 lines, two [fill me] sections) + merge-safe guardrail hook
+# install.sh flags: --all · --uninstall · --sync     setup-repo.sh: --skill · --force · --remove-hooks</code></pre>
 
   <div class="card accent">
     <b>Per-repo setup (the second half of the method):</b> copy <code>templates/AGENTS-CORE.md</code> into each project as <code>AGENTS.md</code> (or <code>CLAUDE.md</code> / <code>GEMINI.md</code>), fill the four bracketed sections, keep it under ~60 lines. The skill drives the session; the context file steers every session in that repo.
@@ -200,7 +203,7 @@ tar czf ~/backups/aek-$(date +%F).tgz \
   ~/.gemini/skills/karpathy-agentic-engineering</code></pre>
   <p>The git repo is the source of truth and the real backup — restore is a clean clone + <code>./install.sh</code>. Never edit live copies; edit the repo and re-sync.</p>
 
-  <h3>Monthly re-validation (repeatable)</h3>
+  <h3>Weekly re-validation — Mondays 09:00 (repeatable)</h3>
   <ol>
     <li><b>Community evidence</b> — run the last30days engine on "Karpathy agentic engineering workflow" with targeting <code>--x-handle=karpathy --github-user=karpathy --subreddits=ChatGPTCoding,ClaudeCode,ExperiencedDevs,AgentsOfAI,singularity</code>. Note findings that support / contradict / extend the six pillars.</li>
     <li><b>Corpus cross-check</b> — <code>notebooklm use a6b9e81a</code> then <code>notebooklm ask "For each finding: does Karpathy's work support it, contradict it, or stay silent? Quote exact words."</code></li>
@@ -211,9 +214,9 @@ tar czf ~/backups/aek-$(date +%F).tgz \
 
   <h3>Porting the rules into a project</h3>
   <ul>
-    <li>Copy <code>templates/AGENTS-CORE.md</code> to the repo root as <code>AGENTS.md</code> (or <code>CLAUDE.md</code> / <code>GEMINI.md</code>).</li>
-    <li>Fill: architecture map, commands, conventions, never-touch list. Under ~60 lines; detail moves to <code>.agents/rules/*.md</code> or docs.</li>
-    <li>Optional: copy the skill into <code>.agents/skills/</code> so repo clones carry the method even without a global install.</li>
+    <li><b>Automated:</b> <code>./setup-repo.sh &lt;repo&gt; --hooks</code> — generates the context file (auto-named: <code>.claude/</code> present → <code>CLAUDE.md</code>, else <code>AGENTS.md</code>) pre-filled with detected commands, never-touch list, detected stack, and the verbatim rules; installs the guardrail hook merge-safe (existing hooks untouched, removable via <code>--remove-hooks</code>); <code>--skill</code> embeds the skill in the repo.</li>
+    <li>Existing files are never overwritten without <code>--force</code> — you get a line-count audit instead (over 60 lines = trim candidate).</li>
+    <li><b>Manual fallback:</b> copy <code>templates/AGENTS-CORE.md</code> to the repo root as <code>AGENTS.md</code> (or <code>CLAUDE.md</code> / <code>GEMINI.md</code>), fill four sections, stay under ~60 lines.</li>
   </ul>
 
   <h3>Troubleshooting</h3>
